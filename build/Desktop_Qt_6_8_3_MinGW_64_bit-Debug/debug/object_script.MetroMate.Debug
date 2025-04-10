@@ -1,0 +1,11 @@
+debug/dashboard.o
+debug/farepage.o
+debug/main.o
+debug/mainwindow.o
+debug/routespage.o
+debug/welcomepage.o
+debug/moc_dashboard.o
+debug/moc_farepage.o
+debug/moc_mainwindow.o
+debug/moc_routespage.o
+debug/moc_welcomepage.o
