@@ -1,0 +1,11 @@
+release/dashboard.o
+release/farepage.o
+release/main.o
+release/mainwindow.o
+release/routespage.o
+release/welcomepage.o
+release/moc_dashboard.o
+release/moc_farepage.o
+release/moc_mainwindow.o
+release/moc_routespage.o
+release/moc_welcomepage.o
