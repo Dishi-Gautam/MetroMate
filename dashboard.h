@@ -4,7 +4,6 @@
 #include <QWidget>
 
 class QPushButton;
-class FarePage;
 class RoutesPage;
 
 class Dashboard : public QWidget {
@@ -14,9 +13,7 @@ public:
     Dashboard(QWidget *parent = nullptr);
 
 private:
-    QPushButton *fareButton;
     QPushButton *routesButton;
-    FarePage *farePage;
     RoutesPage *routesPage;
 };
 

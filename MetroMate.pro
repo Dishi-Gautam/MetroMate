@@ -10,7 +10,6 @@ CONFIG += c++17
 
 SOURCES += \
     dashboard.cpp \
-    farepage.cpp \
     main.cpp \
     mainwindow.cpp \
     routespage.cpp \
@@ -18,7 +17,6 @@ SOURCES += \
 
 HEADERS += \
     dashboard.h \
-    farepage.h \
     mainwindow.h \
     routespage.h \
     welcomepage.h
