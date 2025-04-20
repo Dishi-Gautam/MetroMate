@@ -2,8 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QStackedWidget>
+
 #include "welcomepage.h"
-#include "dashboard.h"
+#include "loginpage.h"
+#include "signuppage.h"
+#include "farepage.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -13,11 +17,16 @@ public:
     ~MainWindow();
 
 private:
+    QStackedWidget *stack;
     WelcomePage *welcomePage;
-    Dashboard *dashboard;
+    LoginPage *loginPage;
+    SignupPage *signupPage;
+    FarePage *farePage;
 
 private slots:
-    void showDashboard();
+    void showLoginPage();
+    void showSignupPage();
+    void showFarePage();
 };
 
 #endif // MAINWINDOW_H

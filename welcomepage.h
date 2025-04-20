@@ -2,20 +2,19 @@
 #define WELCOMEPAGE_H
 
 #include <QWidget>
-
-class QPushButton;
+#include <QPushButton>
 
 class WelcomePage : public QWidget {
     Q_OBJECT
 
 public:
     WelcomePage(QWidget *parent = nullptr);
-
-signals:
-    void goToDashboard();
+    QPushButton* getLoginButton() const;
+    QPushButton* getSignupButton() const;
 
 private:
-    QPushButton *enterButton;
+    QPushButton *loginButton;
+    QPushButton *signupButton;
 };
 
 #endif // WELCOMEPAGE_H
