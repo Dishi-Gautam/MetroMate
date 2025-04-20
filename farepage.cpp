@@ -10,83 +10,134 @@ FarePage::FarePage(QWidget *parent)
     : QWidget(parent)
 {
     setWindowTitle("Delhi Metro Fare & Route");
+    setStyleSheet("background-color: #1e1e1e; color: #FFFFFF;"); // Dark theme
 
-    // Main layout
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(20);
+    mainLayout->setContentsMargins(30, 30, 30, 30);
 
-    // Title
-    QLabel *title = new QLabel("🛤 Plan your Journey", this);
-    title->setStyleSheet("font-size: 26px; font-weight: bold; font-family: 'Segoe UI'; padding: 15px;");
+    QLabel *title = new QLabel("🛤 Plan Your Journey", this);
+    title->setStyleSheet("font-size: 26px; font-weight: bold; font-family: 'Segoe UI'; color: #FFFFFF;");
     mainLayout->addWidget(title, 0, Qt::AlignHCenter);
 
-    // Station selection layout
+    // Station input section
     QHBoxLayout *stationLayout = new QHBoxLayout();
-    stationLayout->setSpacing(15);
+    stationLayout->setSpacing(20);
 
     QLabel *fromLabel = new QLabel("📍 From:", this);
-    fromLabel->setStyleSheet("font-size: 16px; font-family: 'Segoe UI';");
-    sourceStation = new QComboBox(this);
-    sourceStation->addItem("Select Source Station");
-    sourceStation->setStyleSheet("font-size: 16px; padding: 5px;");
-
     QLabel *toLabel = new QLabel("🏁 To:", this);
-    toLabel->setStyleSheet("font-size: 16px; font-family: 'Segoe UI';");
+    QString labelStyle = "font-size: 15px; color: white;";
+
+    fromLabel->setStyleSheet(labelStyle);
+    toLabel->setStyleSheet(labelStyle);
+
+    sourceStation = new QComboBox(this);
     destinationStation = new QComboBox(this);
+
+    sourceStation->addItem("Select Source Station");
     destinationStation->addItem("Select Destination Station");
-    destinationStation->setStyleSheet("font-size: 16px; padding: 5px;");
+
+    QList<QComboBox*> comboBoxes = {sourceStation, destinationStation};
+    for (auto box : comboBoxes) {
+        box->setStyleSheet(R"(
+            QComboBox {
+                font-size: 14px;
+                padding: 6px;
+                background-color: #333;
+                color: white;
+                border: 1px solid #555;
+                border-radius: 4px;
+            }
+            QComboBox QAbstractItemView {
+                background-color: #333;
+                color: white;
+                selection-background-color: #555;
+            }
+        )");
+        box->setMinimumWidth(220);
+    }
 
     stationLayout->addWidget(fromLabel);
     stationLayout->addWidget(sourceStation);
-    stationLayout->addSpacing(30);
     stationLayout->addWidget(toLabel);
     stationLayout->addWidget(destinationStation);
     mainLayout->addLayout(stationLayout);
 
-    // Get Fare & Route Button
-    getFareButton = new QPushButton(" Get Fare and Route", this);
-    getFareButton->setStyleSheet(
-        "font-size: 16px; font-weight: bold; font-family: 'Segoe UI'; "
-        "background-color: #1E90FF; color: white; padding: 10px 20px; "
-        "border-radius: 8px; margin-top: 30px;"
-        );
+    // Get Fare button
+    getFareButton = new QPushButton("Get Fare and Route", this);
+    getFareButton->setStyleSheet(R"(
+        QPushButton {
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+        QPushButton:hover {
+            background-color: #45a049;
+        }
+    )");
     mainLayout->addWidget(getFareButton, 0, Qt::AlignCenter);
 
-    // Advanced Filter Dropdown (below button)
+    // Filter dropdown
     filterDropdown = new QComboBox(this);
     filterDropdown->addItem("🔍 Advanced Filter");
     filterDropdown->addItem("Minimum Interchange");
     filterDropdown->addItem("Minimum Time");
     filterDropdown->addItem("Minimum Distance");
-    filterDropdown->setStyleSheet(
-        "font-size: 14px; font-family: 'Segoe UI'; padding: 4px 8px; "
-        "max-width: 200px; margin-top: -10px;"
-        );
+    filterDropdown->setStyleSheet(R"(
+        QComboBox {
+            font-size: 14px;
+            padding: 6px;
+            background-color: #333;
+            color: white;
+            border-radius: 4px;
+        }
+    )");
+    filterDropdown->setMinimumWidth(220);
     mainLayout->addWidget(filterDropdown, 0, Qt::AlignCenter);
 
-    // Info Labels
+    // Info labels
     fareLabel = new QLabel("💰 Fare: ₹ --", this);
     timeLabel = new QLabel("⏱ Estimated Time: -- mins", this);
     interchangeLabel = new QLabel("🔁 Interchanges: --", this);
-
-    QString labelStyle = "font-size: 17px; font-family: 'Segoe UI'; padding: 6px;";
-    fareLabel->setStyleSheet(labelStyle);
-    timeLabel->setStyleSheet(labelStyle);
-    interchangeLabel->setStyleSheet(labelStyle);
+    QString infoLabelStyle = "font-size: 15px; color: white; padding: 4px;";
+    fareLabel->setStyleSheet(infoLabelStyle);
+    timeLabel->setStyleSheet(infoLabelStyle);
+    interchangeLabel->setStyleSheet(infoLabelStyle);
 
     mainLayout->addWidget(fareLabel);
     mainLayout->addWidget(timeLabel);
     mainLayout->addWidget(interchangeLabel);
 
-    // Route Label
+    // Route section
     QLabel *routeLabel = new QLabel("📌 Route Details:", this);
-    routeLabel->setStyleSheet("font-size: 18px; font-weight: 600; font-family: 'Segoe UI'; margin-top: 10px;");
+    routeLabel->setStyleSheet("font-size: 17px; font-weight: 600; color: white;");
     mainLayout->addWidget(routeLabel);
 
-    // Route Display Box
     routeDisplay = new QTextEdit(this);
     routeDisplay->setReadOnly(true);
     routeDisplay->setPlaceholderText("Stations & interchanges will appear here...");
-    routeDisplay->setStyleSheet("font-size: 15px; font-family: 'Segoe UI'; padding: 8px; min-height: 100px;");
+    routeDisplay->setStyleSheet("font-size: 14px; background-color: #2a2a2a; color: white; padding: 8px;");
+    routeDisplay->setMinimumHeight(100);
     mainLayout->addWidget(routeDisplay);
+
+    // Back button
+    backBtn = new QPushButton("Back", this);
+    backBtn->setStyleSheet(R"(
+        QPushButton {
+            font-size: 15px;
+            background-color: #FF6347;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+        QPushButton:hover {
+            background-color: #FF4500;
+        }
+    )");
+    mainLayout->addWidget(backBtn, 0, Qt::AlignCenter);
+
+    connect(backBtn, &QPushButton::clicked, this, &FarePage::goBackToWelcomePage);
 }

@@ -37,9 +37,7 @@ struct qt_meta_tag_ZN11WelcomePageE_t {};
 
 #ifdef QT_MOC_HAS_STRINGDATA
 static constexpr auto qt_meta_stringdata_ZN11WelcomePageE = QtMocHelpers::stringData(
-    "WelcomePage",
-    "goToDashboard",
-    ""
+    "WelcomePage"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -51,18 +49,12 @@ Q_CONSTINIT static const uint qt_meta_data_ZN11WelcomePageE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       0,    0, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
-
- // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x06,    1 /* Public */,
-
- // signals: parameters
-    QMetaType::Void,
+       0,       // signalCount
 
        0        // eod
 };
@@ -75,9 +67,7 @@ Q_CONSTINIT const QMetaObject WelcomePage::staticMetaObject = { {
     nullptr,
     qt_incomplete_metaTypeArray<qt_meta_tag_ZN11WelcomePageE_t,
         // Q_OBJECT / Q_GADGET
-        QtPrivate::TypeAndForceComplete<WelcomePage, std::true_type>,
-        // method 'goToDashboard'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<WelcomePage, std::true_type>
     >,
     nullptr
 } };
@@ -85,22 +75,10 @@ Q_CONSTINIT const QMetaObject WelcomePage::staticMetaObject = { {
 void WelcomePage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<WelcomePage *>(_o);
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        switch (_id) {
-        case 0: _t->goToDashboard(); break;
-        default: ;
-        }
-    }
-    if (_c == QMetaObject::IndexOfMethod) {
-        int *result = reinterpret_cast<int *>(_a[0]);
-        {
-            using _q_method_type = void (WelcomePage::*)();
-            if (_q_method_type _q_method = &WelcomePage::goToDashboard; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
-                *result = 0;
-                return;
-            }
-        }
-    }
+    (void)_t;
+    (void)_c;
+    (void)_id;
+    (void)_a;
 }
 
 const QMetaObject *WelcomePage::metaObject() const
@@ -119,24 +97,6 @@ void *WelcomePage::qt_metacast(const char *_clname)
 int WelcomePage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
-    if (_id < 0)
-        return _id;
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
-    }
-    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
-    }
     return _id;
-}
-
-// SIGNAL 0
-void WelcomePage::goToDashboard()
-{
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP

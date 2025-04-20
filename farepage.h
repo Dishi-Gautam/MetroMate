@@ -11,7 +11,10 @@ class FarePage : public QWidget {
     Q_OBJECT
 
 public:
-    FarePage(QWidget *parent = nullptr);
+    explicit FarePage(QWidget *parent = nullptr);
+
+signals:
+    void goBackToWelcomePage();
 
 private:
     QComboBox *sourceStation;
@@ -19,6 +22,7 @@ private:
     QComboBox *filterDropdown;
 
     QPushButton *getFareButton;
+    QPushButton *backBtn;
 
     QLabel *fareLabel;
     QLabel *timeLabel;

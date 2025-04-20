@@ -4,17 +4,23 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 
-#include "welcomepage.h"
-#include "loginpage.h"
-#include "signuppage.h"
-#include "farepage.h"
+class WelcomePage;
+class LoginPage;
+class SignupPage;
+class FarePage;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void showLoginPage();
+    void showSignupPage();
+    void showFarePage();
+    void showWelcomePage();  // ✅ This line was missing
 
 private:
     QStackedWidget *stack;
@@ -22,11 +28,6 @@ private:
     LoginPage *loginPage;
     SignupPage *signupPage;
     FarePage *farePage;
-
-private slots:
-    void showLoginPage();
-    void showSignupPage();
-    void showFarePage();
 };
 
 #endif // MAINWINDOW_H
