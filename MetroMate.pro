@@ -9,8 +9,12 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+<<<<<<< HEAD
     farepage.cpp \
     loginpage.cpp \
+=======
+    dashboard.cpp \
+>>>>>>> 66c730e918da3accf179335aaee7268a415fdc68
     main.cpp \
     mainwindow.cpp \
     routespage.cpp \
@@ -18,8 +22,12 @@ SOURCES += \
     welcomepage.cpp
 
 HEADERS += \
+<<<<<<< HEAD
     farepage.h \
     loginpage.h \
+=======
+    dashboard.h \
+>>>>>>> 66c730e918da3accf179335aaee7268a415fdc68
     mainwindow.h \
     routespage.h \
     signuppage.h \
